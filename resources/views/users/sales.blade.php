@@ -80,7 +80,7 @@
                                     {{ $item['quantity'] }}
                                 </td>
                                 <td class="border">
-                                    <form action="poultry/index.php/sales/{{ $item['id'] }}" method="POST">
+                                    <form action="{{ route('deletecart', $item['id']) }}" method="POST">
                                         @csrf
                                         <button class="bg-red-300 hover:bg-red-100 my-4 text-white py-3 px-4 rounded">
                                             remove</button>

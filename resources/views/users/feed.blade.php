@@ -57,7 +57,7 @@
         @endif
         @if (count($feed) > 3)
             <div class="flex justify-end ">
-                <a href="poultry/index.php/showfeed/all"
+                <a href="{{ route('showallfeeds') }}"
                     class="bg-blue-500 hover:bg-blue-400 my-4 text-white py-3 px-4 rounded">
                     view all
                     feed</a>
@@ -97,7 +97,7 @@
                                             class="bg-red-500 hover:bg-blue-400 my-4 text-white py-3 px-4 rounded">delete</button>
                                     </form>
                                 </td>
-                                <td><a href="poultry/index.php/feed/{{ $item->id }}"
+                                <td><a href="{{ route('showsinglefeed', $item->id) }}"
                                         class="bg-blue-500 text-white py-3 px-4 rounded">view</a>
                                 </td>
                             </tr>

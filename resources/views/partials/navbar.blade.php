@@ -25,7 +25,7 @@
                 <a href="{{ route('userdashboard') }}">User Dashboard</a>
             </li>
             <li class='p-2 my-2 border-t-2 border-white'>
-                <a href="poultry/index.php/vaccine">Vaccine</a>
+                <a href="/vaccine">Vaccine</a>
             </li>
             {{-- <li class='p-2 my-2 border-t-2 border-white'>
                 <a href="/disease">Disease</a>
@@ -34,16 +34,16 @@
                 <a href="/poultry-daily">Poultry Daily</a>
             </li> --}}
             <li class='p-2 my-2 border-t-2 border-white'>
-                <a href="poultry/index.php/feed">Feeds</a>
+                <a href="{{ route('feed') }}">Feeds</a>
             </li>
             <li class='p-2 my-2 border-t-2 border-white'>
-                <a href="poultry/index.php/expenses">Expenses</a>
+                <a href="{{ route('expenses') }}">Expenses</a>
             </li>
             <li class='p-2 my-2 border-t-2 border-white'>
                 <a href="{{ route('orders') }}">Orders</a>
             </li>
             <li class='p-2 my-2 border-t-2 border-white'>
-                <a href="poultry/index.php/sales">Sales</a>
+                <a href="{{ route('sales') }}">Sales</a>
             </li>
         @enduser
         @admin

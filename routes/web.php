@@ -43,7 +43,7 @@ Route::get('/orders', [userController::class, 'showorders'])->name('orders')->mi
 Route::get(
     '/orders/{id}',
     [userController::class, 'showSingleOrder']
-)->middleware('auth');
+)->name('showsingleorders')->middleware('auth');
 Route::post(
     '/orders/{id}',
     [userController::class, 'updateStatus']
@@ -51,21 +51,21 @@ Route::post(
 // expenses
 Route::get('/expenses', [userController::class, 'expenses'])->name('expenses')->middleware('auth');
 Route::post('/expenses', [userController::class, 'expensestore'])->name('expensestore')->middleware('auth');
-Route::get('/showexpenses/all', [showAll::class, 'showallexpenses'])->middleware('auth');
-Route::get('/expenses/{id}', [userController::class, 'showsingleexpense'])->middleware('auth');
+Route::get('/showexpenses/all', [showAll::class, 'showallexpenses'])->name('showallexpenses')->middleware('auth');
+Route::get('/expenses/{id}', [userController::class, 'showsingleexpense'])->name('showsingleexpenses')->middleware('auth');
 Route::post('/expenses/{id}', [userController::class, 'expensesdelete'])->name('expensesdelete')->middleware('auth');
 
 // vaccine
 Route::get('/vaccine', [userController::class, 'vaccine'])->name('vaccine')->middleware('auth');
 Route::post('/vaccine', [userController::class, 'vaccinestore'])->name('vaccinestore')->middleware('auth');
 Route::post('/vaccine', [userController::class, 'vaccinestore'])->name('vaccinestore')->middleware('auth');
-Route::get('/vaccine/{id}', [userController::class, 'singlevaccine'])->middleware('auth');
+Route::get('/vaccine/{id}', [userController::class, 'singlevaccine'])->name('showsinglevaccine')->middleware('auth');
 Route::get('/showvaccine/all', [showAll::class, 'showvaccine'])->name('showvaccine')->middleware('auth');
 // feeds
 Route::get('/feed', [userController::class, 'feed'])->name('feed')->middleware('auth');
 Route::post('/feed', [userController::class, 'feedstore'])->name('feedstore')->middleware('auth');
-Route::get('/feed/{id}', [userController::class, 'showsinglefeed'])->middleware('auth');
-Route::get('/showfeed/all', [showAll::class, 'showfeeds'])->middleware('auth');
+Route::get('/feed/{id}', [userController::class, 'showsinglefeed'])->name('showsinglefeed')->middleware('auth');
+Route::get('/showfeed/all', [showAll::class, 'showfeeds'])->name('showallfeeds')->middleware('auth');
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/', [adminController::class, 'dashboard'])->name('admindashboard');
     Route::get('/vaccine', [adminController::class, 'vaccine'])->name('totalvaccine');

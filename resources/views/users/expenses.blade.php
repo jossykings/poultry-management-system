@@ -43,7 +43,7 @@
         </div>
         @if (count($expenses) > 3)
             <div class="flex justify-end ">
-                <a href="poultry/index.php/showexpenses/all"
+                <a href="{{ route('showallexpenses') }}"
                     class="bg-blue-500 hover:bg-blue-400 my-4 text-white py-3 px-4 rounded">
                     show all expenses</a>
             </div>
@@ -77,13 +77,13 @@
                                     {{ substr($item->description, 0, 20) }}{{ strlen($item->description) > 20 ? '....' : '' }}
                                 </td>
                                 <td>
-                                    <form action="/admin/feed/{{ $item->id }}" method="post">
+                                    <form action="{{ route('expensesdelete', $item->id) }}" method="post">
                                         @csrf
                                         <button
                                             class="bg-red-500 hover:bg-blue-400 my-4 text-white py-3 px-4 rounded">delete</button>
                                     </form>
                                 </td>
-                                <td><a href="poultry/index.php/expenses/{{ $item->id }}"
+                                <td><a href="{{ route('showallexpenses', $item->id) }}"
                                         class="bg-blue-500 text-white py-3 px-4 rounded">view</a>
                                 </td>
                             </tr>
