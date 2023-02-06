@@ -93,13 +93,13 @@
                         <td>{{ $item->created_at }}</td>
 
                         <td>
-                            <form action="/vaccine/{{ $item->id }}" method="post">
+                            <form action="poultry/index.php/vaccine/{{ $item->id }}" method="post">
                                 @csrf
                                 <button
                                     class="bg-red-500 hover:bg-blue-400 my-4 text-white py-3 px-4 rounded">delete</button>
                             </form>
                         </td>
-                        <td><a href="/vaccine/{{ $item->id }}"
+                        <td><a href="poultry/index.php/vaccine/{{ $item->id }}"
                                 class="bg-blue-500 text-white py-3 px-4 rounded">view</a></td>
                     </tr>
                 @endforeach

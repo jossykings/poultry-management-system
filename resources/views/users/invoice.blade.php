@@ -27,7 +27,7 @@
                             <td>{{ ucfirst($item->payment_method) }}</td>
                             <td>{{ $item->status }}</td>
                             <td>{{ $item->created_at }}</td>
-                            <td class="p-4"><a href="/orders/{{ $item->order_id }}"
+                            <td class="p-4"><a href="poultry/index.php/orders/{{ $item->order_id }}"
                                     class="bg-yellow-400 hover:bg-blue-400  text-white py-3 px-4 rounded">view</a></td>
 
                         </tr>

@@ -31,13 +31,14 @@
                         <td>{{ $item->size_of_feed }}</td>
 
                         <td>
-                            <form action="/admin/feed/{{ $item->id }}" method="post">
+                            <form action="poultry/index.php/admin/feed/{{ $item->id }}" method="post">
                                 @csrf
                                 <button
                                     class="bg-red-500 hover:bg-blue-400 my-4 text-white py-3 px-4 rounded">delete</button>
                             </form>
                         </td>
-                        <td><a href="/feed/{{ $item->id }}" class="bg-blue-500 text-white py-3 px-4 rounded">view</a>
+                        <td><a href="poultry/index.php/feed/{{ $item->id }}"
+                                class="bg-blue-500 text-white py-3 px-4 rounded">view</a>
                         </td>
                     </tr>
                 @endforeach

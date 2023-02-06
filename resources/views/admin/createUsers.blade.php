@@ -120,7 +120,7 @@
                                     class="bg-yellow-500 hover:bg-blue-400 my-4 text-white py-3 px-4 rounded">edit</button>
                             </td>
                             <td>
-                                <form action="/admin/users/{{ $item->id }}" method="post">
+                                <form action="poultry/index.php/admin/users/{{ $item->id }}" method="post">
                                     @csrf
                                     <button
                                         class="bg-red-500 hover:bg-blue-400 my-4 text-white py-3 px-4 rounded">delete</button>
