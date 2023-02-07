@@ -40,6 +40,7 @@
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
 
+
                     <label for="size" class="sr-only">size</label>
                     <input type="number" name="size"
                         class="bg-gray-100 @error('size') border-red-300 @enderror border-2 w-full p-4 rounded-lg mb-3"

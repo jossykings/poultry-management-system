@@ -18,6 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('name_of_product');
             $table->integer('price_of_product');
             $table->integer('quantity_of_product');
+            $table->integer('quantity_of_eggs_used');
+            $table->integer('number_of_birds');
             $table->string('product_category');
             $table->mediumText('product_descripiton');
             $table->timestamps();

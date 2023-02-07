@@ -55,4 +55,9 @@
             </p>
         </div>
     </div>
+    <div class="flex justify-end p-3">
+        <a class="bg-blue-500 mx-3  text-white py-3 px-4 rounded " href="{{ route('poultrydailydetail') }}">Poultry Daily
+            Report</a>
+        <a class="bg-blue-500   text-white py-3 px-4 rounded " href="{{ route('farmexpenses') }}">Farm Financies</a>
+    </div>
 @endsection

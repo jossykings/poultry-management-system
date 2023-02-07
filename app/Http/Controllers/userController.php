@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\chickpurchase;
 use App\Models\feed;
 use App\Models\sales;
 use App\Models\products;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\poultrydaily;
 use App\Models\Userexpenses;
 use App\Models\Userfeed;
 use App\Models\Uservaccine;
@@ -43,6 +45,12 @@ class userController extends Controller
         $product = products::all();
         $cart = session()->get('cartProduct');
         return view('users/sales')->with(['product' => $product, 'cart' => $cart]);
+    }
+    public function deletefeed($id)
+    {
+        $feed = Userfeed::find($id);
+        $feed->delete();
+        return redirect()->back()->with('success', 'Feed Succefully Deleted');
     }
     public function showSingleOrder($id)
     {
@@ -171,12 +179,14 @@ class userController extends Controller
         $this->validate($request, [
             'serial_number' => 'required',
             'subject' => 'required',
+            'possible_cost' => 'required',
             'reference' => 'required',
             'description' => 'required',
         ]);
         $expenses = new Userexpenses();
         $expenses->serial_number = $request->serial_number;
         $expenses->subject = $request->subject;
+        $expenses->possible_cost = $request->possible_cost;
         $expenses->reference = $request->reference;
         $expenses->description = $request->description;
         $expenses->save();
@@ -184,8 +194,16 @@ class userController extends Controller
     }
     public function showorders()
     {
+        $currentdate = Carbon::today();
+        $totalsales = DB::table('orders')->sum('unit_price');
+
+        $todaysales = Order::whereDate('created_at', '=', $currentdate)->get()->sum('unit_price');
         $order = Order::all();
-        return view('users/invoice')->with('order', $order);
+        return view('users/invoice')->with([
+            'order' => $order,
+            'todaysales' => $todaysales,
+            'totalsales' => $totalsales,
+        ]);
     }
 
     public function vaccinestore(Request $request)
@@ -212,9 +230,11 @@ class userController extends Controller
     public function feed()
     {
         $adminFeed = feed::all();
+        $totaluserfeed = DB::table('userfeeds')->sum('quantity_consumed');
+        $totalsize = DB::table('userfeeds')->sum('size_of_feed');
         $feed = Userfeed::orderBy('created_at', 'desc')->limit(4)->get();
         // dd(count($feed));
-        return view('users/feed')->with(['feed' => $feed, 'adminfeed' => $adminFeed]);
+        return view('users/feed')->with(['feed' => $feed, 'adminfeed' => $adminFeed, 'totaluserfeed' => $totaluserfeed, 'totalusersize' => $totalsize]);
     }
     public function showsinglefeed($id)
     {
@@ -228,6 +248,23 @@ class userController extends Controller
     public function poultrydaily()
     {
         return view('users/poultry-products');
+    }
+    public function poultrydailystore(Request $request)
+    {
+
+        $this->validate($request, [
+            'number_of_birds' => 'required',
+            'number_of_eggs' => 'required',
+            'yield_of_broilers' => 'required',
+        ]);
+        $daily = new poultrydaily();
+        $daily->number_of_eggs = $request->number_of_eggs;
+        $daily->number_of_birds = $request->number_of_birds;
+        $daily->number_of_damaged_eggs = $request->damaged_eggs;
+        $daily->yield_for_broilers = $request->yield_of_broilers;
+        $daily->number_of_birds_dead = $request->dead_birds;
+        $daily->save();
+        return redirect()->back()->with('success', 'Daily Report successfully added');
     }
     public function feedstore(Request $request)
     {
@@ -244,5 +281,17 @@ class userController extends Controller
         $feed->size_of_feed = $request->size;
         $feed->save();
         return redirect()->back()->with('success', 'feed successfully added');
+    }
+    public function poultrydailydetail()
+    {
+        $poultry = DB::table('poultrydailies')->orderBy('created_at', 'desc')->first();
+        $chick = DB::table('chickpurchases')->orderBy('created_at', 'desc')->first();
+        $chickall = chickpurchase::all();
+        // $totalyield 
+        return view('users/poultry-daily-details')->with([
+            'poultry' => $poultry,
+            'chick' => $chick,
+            'chickall' => $chickall,
+        ]);
     }
 }

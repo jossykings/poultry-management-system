@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserexpensesTable extends Migration
+class CreatePoultrydailiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateUserexpensesTable extends Migration
      */
     public function up()
     {
-        Schema::create('userexpenses', function (Blueprint $table) {
+        Schema::create('poultrydailies', function (Blueprint $table) {
             $table->id();
-            $table->integer('serial_number');
-            $table->integer('possible_cost');
-            $table->string('subject');
-            $table->string('reference');
-            $table->mediumText('description');
+            $table->integer('number_of_eggs');
+            $table->integer('number_of_birds');
+            $table->integer('yield_for_broilers');
+            $table->integer('number_of_damaged_eggs');
+            $table->integer('number_of_birds_dead');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateUserexpensesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('userexpenses');
+        Schema::dropIfExists('poultrydailies');
     }
 }

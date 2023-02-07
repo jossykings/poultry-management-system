@@ -32,7 +32,8 @@ Route::post('/login', [authController::class, 'postLogin'])->name('LoginPost');
 Route::get('/home', [userController::class, 'dashboard'])->name('userdashboard')->middleware('auth');
 Route::get('/sales', [userController::class, 'showsales'])->name('sales')->middleware('auth');
 Route::get('/disease', [userController::class, 'showdisease'])->middleware('auth');
-Route::get('/poultry-daily', [userController::class, 'poultrydaily'])->middleware('auth');
+Route::get('/poultry-daily', [userController::class, 'poultrydaily'])->name('poultrydaily')->middleware('auth');
+Route::get('/poultry-daily-details', [userController::class, 'poultrydailydetail'])->name('poultrydailydetail')->middleware('auth');
 Route::post('/poultry-daily', [userController::class, 'poultrydailystore'])->name('poultrydailystore')->middleware('auth');
 Route::post('/sales', [userController::class, 'postsales'])->name('postsales')->middleware('auth');
 Route::post('/cart', [userController::class, 'addtocart'])->name('cartstore')->middleware('auth');
@@ -65,10 +66,15 @@ Route::get('/showvaccine/all', [showAll::class, 'showvaccine'])->name('showvacci
 Route::get('/feed', [userController::class, 'feed'])->name('feed')->middleware('auth');
 Route::post('/feed', [userController::class, 'feedstore'])->name('feedstore')->middleware('auth');
 Route::get('/feed/{id}', [userController::class, 'showsinglefeed'])->name('showsinglefeed')->middleware('auth');
+Route::post('/feeddelte/{id}', [userController::class, 'deletefeed'])->name('deleteuserfeed')->middleware('auth');
 Route::get('/showfeed/all', [showAll::class, 'showfeeds'])->name('showallfeeds')->middleware('auth');
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/', [adminController::class, 'dashboard'])->name('admindashboard');
+    Route::get('/farmexpenses', [adminController::class, 'farmexpenses'])->name('farmexpenses');
     Route::get('/vaccine', [adminController::class, 'vaccine'])->name('totalvaccine');
+    Route::get('/chickpurchase', [adminController::class, 'chickpurchase'])->name('chickpurchase');
+    Route::post('/chickstore', [adminController::class, 'chickstore'])->name('chickstore');
+    Route::get('/expenses', [adminController::class, 'expenses'])->name('totalexpenses');
     Route::post('/vaccine/{id}', [adminController::class, 'deletevaccine']);
     Route::post('/vaccine', [adminController::class, 'postVaccine'])->name('totalpostvaccine');
     Route::get('/feeds', [adminController::class, 'feeds'])->name('totalfeeds');

@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\chickpurchase;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\vaccine;
 use App\Models\feed;
 use App\Models\products;
+use App\Models\Userexpenses;
 use App\Models\Userfeed;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class adminController extends Controller
 {
@@ -44,6 +48,8 @@ class adminController extends Controller
     public function deleteUsers($id)
     {
         $user = User::find($id);
+        // dd("public/storage/user_image/$user->image");
+        Storage::delete("public/user_image/$user->image");
         $user->delete();
         return back()->with('success', 'user successfully deleted');
     }
@@ -159,6 +165,8 @@ class adminController extends Controller
         $product->name_of_product = $request->name;
         $product->price_of_product = $request->price;
         $product->quantity_of_product = $request->quantity;
+        $product->quantity_of_eggs_used = $request->quantity_of_eggs_used;
+        $product->number_of_birds = $request->number_of_birds;
         $product->product_category = $request->category;
         $product->product_descripiton = $request->description;
         $product->save();
@@ -169,5 +177,86 @@ class adminController extends Controller
         $product = products::find($id);
         $product->delete();
         return redirect()->back()->with('success', 'product successfully deleted');
+    }
+    public function chickpurchase()
+    {
+        return view('admin/chickpurchase');
+    }
+    public function chickstore(Request $request)
+    {
+        $chick = new chickpurchase();
+        $this->validate($request, [
+            'chick_type' => 'required',
+            'name' => 'required',
+            'quantity_bought' => 'required',
+            'unit_price' => 'required',
+            'total_price' => 'required',
+        ]);
+        $chick->category = $request->chick_type;
+        $chick->company_name = $request->name;
+        $chick->quantity = $request->quantity_bought;
+        $chick->unit_price = $request->unit_price;
+        $chick->yield = $request->yield;
+        $chick->total_price = $request->total_price;
+        $chick->save();
+        return redirect()->back()->with('success', 'Chick Purchase Successfully Added');
+    }
+    public function expenses()
+    {
+        $userssalary = DB::table('users')->where('role', '0')->sum('salary');
+        // 
+        $user = User::where('role', '0')->get();
+        // 
+        $feed = feed::all();
+        // 
+        $totalfeedcost = DB::table('feeds')->sum('price_of_feed');
+        // 
+        $vaccine = vaccine::all();
+        // 
+        $totalvaccinecost = DB::table('vaccines')->sum('price');
+        // 
+        $chick = chickpurchase::all();
+        // 
+        $totalchickcost = DB::table('chickpurchases')->sum('total_price');
+        // 
+        $expenses = Userexpenses::all();
+        // 
+        $totaluserexpenses = DB::table('userexpenses')->sum('possible_cost');
+        // 
+        $totalexpenses = $userssalary +  $totalfeedcost  + $totalvaccinecost + $totalchickcost + $totaluserexpenses;
+        return view('admin/expenses')->with([
+            'usersalary' => $userssalary,
+            'user' => $user,
+            'totalfeedcost' => $totalfeedcost,
+            'feed' => $feed,
+            'vaccine' => $vaccine,
+            'totalvaccinecost' => $totalvaccinecost,
+            'totalchickcost' => $totalchickcost,
+            'chick' => $chick,
+            'expenses' => $expenses,
+            'totaluserexpenses' => $totaluserexpenses,
+            'totalexpenses' => $totalexpenses
+        ]);
+    }
+    public function farmexpenses()
+    {
+        $userssalary = DB::table('users')->where('role', '0')->sum('salary');
+        // 
+        $totalfeedcost = DB::table('feeds')->sum('price_of_feed');
+        // 
+        $totalvaccinecost = DB::table('vaccines')->sum('price');
+        // 
+        $totalchickcost = DB::table('chickpurchases')->sum('total_price');
+        // 
+        $totaluserexpenses = DB::table('userexpenses')->sum('possible_cost');
+        // 
+        $totalexpenses = $userssalary +  $totalfeedcost  + $totalvaccinecost + $totalchickcost + $totaluserexpenses;
+        // 
+        $totalsales = DB::table('orders')->sum('unit_price');
+        // decrypt()
+        return view('admin/farmexpenses')->with([
+            'totalexpenses' => $totalexpenses,
+            'totalsales' => $totalsales
+        ]);
     }
 }

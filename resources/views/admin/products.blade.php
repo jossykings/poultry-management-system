@@ -37,6 +37,14 @@
                     @error('category')
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
+                    <label for="quantity_of_eggs_used" class="sr-only">quantity of eggs used</label>
+                    <input type="hidden" name="quantity_of_eggs_used"
+                        class="bg-gray-100 @error('quantity_of_eggs_used') border-red-300 @enderror border-2 w-full p-4 rounded-lg mb-3"
+                        placeholder="Quantity of Eggs Used" id="quantity_of_eggs_used" />
+                    <label for="number_of_birds" class="sr-only">number of birds</label>
+                    <input type="hidden" name="number_of_birds"
+                        class="bg-gray-100 @error('number_of_birds') border-red-300 @enderror border-2 w-full p-4 rounded-lg mb-3"
+                        placeholder="Number of Birds Used" id="number_of_birds" />
                     <label for="description" class="sr-only">description</label>
                     <textarea name="description" id="description"
                         class="bg-gray-100 @error('description') border-red-300 @enderror border-2 w-full p-4 rounded-lg mb-3"
@@ -102,4 +110,7 @@
             </div>
         @endif
     </div>
+@endsection
+@section('script')
+    <script src="{{ asset('js/purchase.js') }}"></script>
 @endsection

@@ -1,5 +1,6 @@
 const click = document.getElementById("click");
 const showform = document.getElementById("showform");
+
 click.addEventListener("click", () => {
     showform.classList.toggle("open");
     if (showform.classList.contains("open")) {

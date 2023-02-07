@@ -25,14 +25,8 @@
                 <a href="{{ route('userdashboard') }}">User Dashboard</a>
             </li>
             <li class='p-2 my-2 border-t-2 border-white'>
-                <a href="/vaccine">Vaccine</a>
+                <a href="{{ route('vaccine') }}">Vaccine</a>
             </li>
-            {{-- <li class='p-2 my-2 border-t-2 border-white'>
-                <a href="/disease">Disease</a>
-            </li>
-            <li class='p-2 my-2 border-t-2 border-white'>
-                <a href="/poultry-daily">Poultry Daily</a>
-            </li> --}}
             <li class='p-2 my-2 border-t-2 border-white'>
                 <a href="{{ route('feed') }}">Feeds</a>
             </li>
@@ -45,6 +39,9 @@
             <li class='p-2 my-2 border-t-2 border-white'>
                 <a href="{{ route('sales') }}">Sales</a>
             </li>
+            <li class='p-2 my-2 border-t-2 border-white'>
+                <a href="{{ route('poultrydaily') }}">Poultry Daily Report</a>
+            </li>
         @enduser
         @admin
             <li class="flex mb-5 flex-col">
@@ -56,20 +53,26 @@
             <li>
                 <a href="{{ route('admindashboard') }}">Dashboard</a>
             </li>
-            <li class='p-2 my-4 border-t-2 border-white'>
+            <li class='p-1 my-4 border-t-2 border-white'>
                 <a href="{{ route('totalfeeds') }}">Feeds</a>
             </li>
-            <li class='p-2 my-4 border-t-2 border-white'>
+            <li class='p-1 my-4 border-t-2 border-white'>
+                <a href="{{ route('chickpurchase') }}">Chicks Purchase</a>
+            </li>
+            <li class='p-1 my-4 border-t-2 border-white'>
                 <a href="{{ route('totalvaccine') }}">vaccine</a>
             </li>
-            <li class='p-2 my-4 border-t-2 border-white'>
+            <li class='p-1 my-4 border-t-2 border-white'>
                 <a href="{{ route('products') }}">Products</a>
             </li>
-            <li class='p-2 my-4 border-t-2 border-white'>
+            <li class='p-1 my-4 border-t-2 border-white'>
                 <a href="{{ route('orders') }}">Orders</a>
             </li>
+            <li class='p-1 my-4 border-t-2 border-white'>
+                <a href="{{ route('totalexpenses') }}">All Expenses</a>
+            </li>
 
-            <li class="p-2 my-4 border-t-2 border-white">
+            <li class="p-1 my-4 border-t-2 border-white">
                 <a href="{{ route('showusers') }}"class='p-1'>add users</a>
             </li>
         @endadmin

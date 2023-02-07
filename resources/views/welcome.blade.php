@@ -38,7 +38,7 @@
 
     <div class="body">
         <div class="contents text-white text-center">
-            <h1 class="text-5xl mb-4">Welcome to FORA FAMRS</h1>
+            <h1 class="text-5xl mb-4">Welcome to FORA FARMS</h1>
             <p class="text-2xl mb-5">The home of poultry products which are rich in protein, <br> good source of
                 phosphorus
                 and

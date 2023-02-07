@@ -27,6 +27,13 @@
                     @error('reference')
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
+                    <label for="possible_cost" class="sr-only">Possible Cost</label>
+                    <input type="text" name="possible_cost"
+                        class="bg-gray-100 @error('possible_cost') border-red-300 @enderror border-2 w-full p-4 rounded-lg mb-3"
+                        placeholder="Possible Cost(&#8358;)" id="possible_cost" />
+                    @error('possible_cost')
+                        <div class="text-red-500">{{ $message }}</div>
+                    @enderror
                     <label for="description" class="sr-only">description</label>
                     <textarea name="description" id="description"
                         class="bg-gray-100 @error('description') border-red-300 @enderror border-2 w-full p-4 rounded-lg mb-3"
@@ -83,7 +90,7 @@
                                             class="bg-red-500 hover:bg-blue-400 my-4 text-white py-3 px-4 rounded">delete</button>
                                     </form>
                                 </td>
-                                <td><a href="{{ route('showallexpenses', $item->id) }}"
+                                <td><a href="{{ route('showsingleexpenses', $item->id) }}"
                                         class="bg-blue-500 text-white py-3 px-4 rounded">view</a>
                                 </td>
                             </tr>

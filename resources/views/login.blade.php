@@ -16,7 +16,7 @@
     <div class="flex justify-center my-6 ">
         <div class="bg-white w-4/12 p-9 rounded-lg shadow-md ">
             <div class="flex justify-center ">
-                <img src="{{ asset('images/logo.jpeg') }}" width="100px" alt="school logo">
+                <img src="{{ asset('images/forlogin.jpg') }}" width="200px" alt="school logo">
             </div>
             <h1 class="text-lg text-center w-full my-4">login</h1>
             <form action="{{ route('login') }}" method="POST">

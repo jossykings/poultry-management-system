@@ -12,7 +12,7 @@
                             <th> Name of Feed</th>
                             <th>Category of Feed</th>
                             <th>Quantity Avaliable</th>
-                            <th>Size Avaliable</th>
+                            <th>Size Avaliable(kg)</th>
                             <th>Quantity Given</th>
                             <th>Size</th>
                             <th>Action </th>
@@ -24,8 +24,8 @@
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->name_of_feed }}</td>
                                 <td>{{ $item->category_of_feed }}</td>
-                                <td>{{ $item->quantity_of_feed }}</td>
-                                <td>{{ $item->size_of_feed }}</td>
+                                <td>{{ $item->quantity_of_feed - $totaluserfeed }}</td>
+                                <td>{{ $item->size_of_feed - $totalusersize }}</td>
                                 <form action="{{ route('feedstore') }}" method="post">
                                     @csrf
                                     <td>
@@ -73,7 +73,8 @@
                             <th>Name of feed</th>
                             <th>Quantity Consumed</th>
                             <th>Category of Feed</th>
-                            <th>Size of Feed</th>
+                            <th>Size of Feed(kg)</th>
+                            <th>Yield(kg)</th>
 
                             <th>##
                             </th>
@@ -91,7 +92,7 @@
                                 <td>{{ $item->category_of_feed }}</td>
                                 <td>{{ $item->size_of_feed }}</td>
                                 <td>
-                                    <form action="poultry/index.php/admin/feed/{{ $item->id }}" method="post">
+                                    <form action="{{ route('deleteuserfeed', $item->id) }}" method="post">
                                         @csrf
                                         <button
                                             class="bg-red-500 hover:bg-blue-400 my-4 text-white py-3 px-4 rounded">delete</button>

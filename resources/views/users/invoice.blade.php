@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('section')
     @if (count($order) > 0)
+        <div>
+            <p>Total Sales:(&#8358;) {{ $totalsales }} </p>
+            <p>Total Sales Today: (&#8358;){{ $todaysales }} </p>
+        </div>
         <div class="flex flex-col w-full justify-center p-4">
             <p class="text-center text-2xl my-5"> All Orders</p>
             <table class="w-full">

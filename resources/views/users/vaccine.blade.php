@@ -50,7 +50,7 @@
                 </table>
             </div>
         @else
-            <center>No Feed Avaliable</center>
+            <center>No Vaccine Avaliable</center>
         @endif
         @if (count($vaccine) > 3)
             <div class="flex justify-end ">
