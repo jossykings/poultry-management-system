@@ -23,10 +23,11 @@
                     @error('name')
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror
-                    <label for="yield" class="sr-only">Company Name</label>
+                    <label for="yield" class="" style="display: none;" id="yield_label">Yield(weight of chick in
+                        kg)</label>
                     <input type="hidden" name="yield" id="yield"
                         class="bg-gray-100 @error('yield') border-red-300 @enderror border-2 w-full p-4 rounded-lg mb-3"
-                        placeholder="Yield(weight of the chick in kg)" />
+                        placeholder="" value="0" />
                     @error('yield')
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror

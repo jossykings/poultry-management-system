@@ -30,8 +30,11 @@ class adminController extends Controller
         // 
         $totalvaccineremaining = $totalvaccine - $totaluservaccine;
         //   
+        $poultry = DB::table('poultrydailies')->orderBy('created_at', 'desc')->first();
+        // 
         return view('admin/adminDashboard')->with([
             'totalusers' => $totalusers,
+            'poultry' => $poultry,
             'totalfeeds' => $totalfeeds,
             'totaluserfeeds' => $totaluserfeeds,
             'totalfeedsremaining' => $totalfeedsremaining,
@@ -151,6 +154,16 @@ class adminController extends Controller
     {
         $product = products::orderBy('created_at', 'desc')->limit(4)->get();
         return view('admin/products')->with('products', $product);
+    }
+    public function viewvaccines()
+    {
+        $vaccine = vaccine::all();
+        return view('single/adminvaccine')->with('vaccine', $vaccine);
+    }
+    public function viewfeeds()
+    {
+        $feed = feed::all();
+        return view('single/adminfeed')->with('feed', $feed);
     }
     public function productstore(Request $request)
     {

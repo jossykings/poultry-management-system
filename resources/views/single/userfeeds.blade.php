@@ -10,7 +10,8 @@
         <div>Name of Feed: &nbsp;&nbsp; {{ $feed->name_of_feed }}</div>
         <div>Quantity Consumed:&nbsp;&nbsp;{{ $feed->quantity_consumed }}</div>
         <div>Category:&nbsp;&nbsp;{{ $feed->category_of_feed }}</div>
-        <div>Size:&nbsp;&nbsp;{{ $feed->created_at }}</div>
+        <div>Size:&nbsp;&nbsp;{{ $feed->size_of_feed }}</div>
+        <div>Date:&nbsp;&nbsp;{{ $feed->created_at }}</div>
 
     </div>
 @endsection

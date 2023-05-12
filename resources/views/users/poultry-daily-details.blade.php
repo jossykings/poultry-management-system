@@ -4,6 +4,7 @@
         <a href="{{ url()->previous() }}" class="bg-green-300   text-white py-3 px-4 rounded">
             << back </a>
     </div>
+    {{-- @if ($poultry > 0) --}}
     <div class="my-5">
         <h1>Poultry Birds Details</h1>
         <hr>
@@ -23,4 +24,9 @@
             <p>Broliers(as in Weight in Kilograms):{{ $chick->yield }}kg</p>
         </div>
     </div>
+    {{-- @else
+        <p>
+            <center> Poultry daily Report not added </center>
+        </p>
+    @endif --}}
 @endsection

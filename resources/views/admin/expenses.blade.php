@@ -2,36 +2,72 @@
 @section('section')
     <div class="" style="margin-bottom: 50px;">
         <div class="flex justify-end p-2">Total Expenses = (&#8358;){{ $totalexpenses }}</div>
-        <h3 class=" mt-5 ">Users Expenses</h3>
+        <h3 class=" mt-5 ">Expenses</h3>
         <hr>
         <div class="mt-5 ">
             <table class="w-6/12 border-seperate">
 
                 <thead>
                     <tr>
-                        <th class="border">Name</th>
-                        <th class="border">Rank</th>
-                        <th class="border">Salary
-                        </th>
+                        <th class="border">Description</th>
+                        <th class="border">Cost</th>
                     </tr>
                 </thead>
                 <tbody class="border-seperate">
                     @foreach ($user as $item)
-                        <tr class="text-center">
+                        <tr class="">
 
-                            <td class="border p-3">{{ $item->name }}</td>
-                            <td class="border">{{ $item->position }}</td>
+                            <td class="border p-3">Salary to be paid to {{ $item->name }} whose position is
+                                {{ $item->position }}
+                            </td>
                             <td class="border">{{ $item->salary }}
                         </tr>
                     @endforeach
-                    <tr class="text-center">
-                        <td class="border" colspan="2">Total</td>
-                        <td class="border">{{ $usersalary }}</td>
-                    </tr>
+                    @foreach ($feed as $item)
+                        <tr class="">
+
+                            <td class="border p-3">
+                                <p>
+                                    Name of feed: {{ $item->name_of_feed }},
+                                </p>
+                                category of
+                                feed:{{ $item->category_of_feed }}, quantity bought:{{ $item->quantity_of_feed }},
+                            </td>
+
+                            <td class="border">{{ $item->price_of_feed }}</td>
+                        </tr>
+                    @endforeach
+                    @foreach ($vaccine as $item)
+                        <tr class="">
+
+                            <td class="border p-3">Name of Vaccine: {{ $item->name_of_vaccine }},
+                                Quantity:{{ $item->quantity }}</td>
+
+                            <td class="border">{{ $item->price }}
+                        </tr>
+                    @endforeach
+                    @foreach ($chick as $item)
+                        <tr class="">
+
+                            <td class="border p-3">Name of company:{{ $item->company_name }}
+                                <p>Type of chick bought:{{ $item->category }}</p>
+                                <p>Quanitity:{{ $item->quantity }}</p>
+                            </td>
+                            <td class="border">{{ $item->total_price }}
+                        </tr>
+                    @endforeach
+                    @foreach ($expenses as $item)
+                        <tr class="">
+
+                            <td class="border p-3">user Expense:{{ $item->subject }},Reference:{{ $item->reference }}</td>
+
+                            <td class="border p-3">{{ $item->possible_cost }}
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
-        <div>
+        {{-- <div>
             <h3 class=" mt-5 ">Feed Expenses</h3>
             <hr>
             @if (count($feed) > 0)
@@ -47,15 +83,7 @@
                             </tr>
                         </thead>
                         <tbody class="border-seperate">
-                            @foreach ($feed as $item)
-                                <tr class="text-center">
 
-                                    <td class="border p-3">{{ $item->name_of_feed }}</td>
-                                    <td class="border">{{ $item->category_of_feed }}</td>
-                                    <td class="border">{{ $item->quantity_of_feed }}
-                                    <td class="border">{{ $item->price_of_feed }}
-                                </tr>
-                            @endforeach
                             <tr class="text-center">
                                 <td class="border" colspan="3">Total</td>
                                 <td class="border">{{ $totalfeedcost }}</td>
@@ -66,9 +94,9 @@
             @else
                 <p>No Feed Bought Yet</p>
             @endif
-        </div>
+        </div> --}}
 
-        <div>
+        {{-- <div>
             <h3 class=" mt-5 ">Vaccine Expenses</h3>
             <hr>
             @if (count($vaccine) > 0)
@@ -83,14 +111,7 @@
                             </tr>
                         </thead>
                         <tbody class="border-seperate">
-                            @foreach ($vaccine as $item)
-                                <tr class="text-center">
 
-                                    <td class="border p-3">{{ $item->name_of_vaccine }}</td>
-                                    <td class="border">{{ $item->quantity }}
-                                    <td class="border">{{ $item->price }}
-                                </tr>
-                            @endforeach
                             <tr class="text-center">
                                 <td class="border" colspan="2">Total</td>
                                 <td class="border">{{ $totalvaccinecost }}</td>
@@ -118,15 +139,7 @@
                             </tr>
                         </thead>
                         <tbody class="border-seperate">
-                            @foreach ($chick as $item)
-                                <tr class="text-center">
 
-                                    <td class="border p-3">{{ $item->company_name }}</td>
-                                    <td class="border ">{{ $item->category }}</td>
-                                    <td class="border">{{ $item->quantity }}
-                                    <td class="border">{{ $item->total_price }}
-                                </tr>
-                            @endforeach
                             <tr class="text-center">
                                 <td class="border" colspan="3">Total</td>
                                 <td class="border">{{ $totalchickcost }}</td>
@@ -152,14 +165,7 @@
                         </tr>
                     </thead>
                     <tbody class="border-seperate">
-                        @foreach ($expenses as $item)
-                            <tr class="text-center">
 
-                                <td class="border p-3">{{ $item->subject }}</td>
-                                <td class="border ">{{ $item->reference }}</td>
-                                <td class="border">{{ $item->possible_cost }}
-                            </tr>
-                        @endforeach
                         <tr class="text-center">
                             <td class="border" colspan="2">Total</td>
                             <td class="border">{{ $totaluserexpenses }}</td>
@@ -170,7 +176,6 @@
         @else
             <p>No Expenses Yet</p>
         @endif
+    </div> --}}
     </div>
-    </div>
-
 @endsection

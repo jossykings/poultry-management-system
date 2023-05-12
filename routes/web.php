@@ -70,6 +70,8 @@ Route::post('/feeddelte/{id}', [userController::class, 'deletefeed'])->name('del
 Route::get('/showfeed/all', [showAll::class, 'showfeeds'])->name('showallfeeds')->middleware('auth');
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/', [adminController::class, 'dashboard'])->name('admindashboard');
+    Route::get('/viewfeeds', [adminController::class, 'viewfeeds'])->name('viewfeed');
+    Route::get('/viewvaccines', [adminController::class, 'viewvaccines'])->name('viewvaccines');
     Route::get('/farmexpenses', [adminController::class, 'farmexpenses'])->name('farmexpenses');
     Route::get('/vaccine', [adminController::class, 'vaccine'])->name('totalvaccine');
     Route::get('/chickpurchase', [adminController::class, 'chickpurchase'])->name('chickpurchase');
