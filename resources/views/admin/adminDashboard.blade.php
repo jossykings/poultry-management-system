@@ -105,9 +105,20 @@
                 </div>
                 <div>
                     <div>
-                        <p>Total Number of eggs: {{ $poultry->number_of_eggs }}</p>
+                        <p>Total Number of eggs:
+                            @if ($poultry > 0)
+                                {{ $poultry->number_of_eggs }}
+                            @else
+                                0.00
+                            @endif
+                        </p>
                         <p>
-                            Total Number of birds:{{ $poultry->number_of_birds }}
+                            Total Number of birds:
+                            @if ($poultry > 0)
+                                {{ $poultry->number_of_birds }}
+                            @else
+                                0.00
+                            @endif
                         </p>
                     </div>
                 </div>
