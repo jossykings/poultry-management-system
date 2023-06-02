@@ -179,7 +179,7 @@ class adminController extends Controller
         $product->price_of_product = $request->price;
         $product->quantity_of_product = $request->quantity;
         $product->quantity_of_eggs_used = $request->quantity_of_eggs_used;
-        $product->number_of_birds = $request->number_of_birds;
+        // $product->number_of_birds = $request->number_of_birds;
         $product->product_category = $request->category;
         $product->product_descripiton = $request->description;
         $product->save();
