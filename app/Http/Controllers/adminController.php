@@ -30,7 +30,7 @@ class adminController extends Controller
         // 
         $totalvaccineremaining = $totalvaccine - $totaluservaccine;
         //   
-        $poultry = DB::table('poultrydailies')->orderBy('created_at', 'desc')->first();
+        $poultry = DB::table('poultrydailies')->orderBy('created_at', 'desc')->get();
         // 
         return view('admin/adminDashboard')->with([
             'totalusers' => $totalusers,
@@ -100,6 +100,12 @@ class adminController extends Controller
         $feed = feed::find($id);
         $feed->delete();
         return redirect()->back()->with('success', 'feed successfully deleted');
+    }
+    public function productdelete($id)
+    {
+        $product = products::find($id);
+        $product->delete();
+        return redirect()->back()->with('success', 'product successfully deleted');
     }
     public function postFeeds(Request $request)
     {

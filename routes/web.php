@@ -78,6 +78,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::post('/chickstore', [adminController::class, 'chickstore'])->name('chickstore');
     Route::get('/expenses', [adminController::class, 'expenses'])->name('totalexpenses');
     Route::post('/vaccine/{id}', [adminController::class, 'deletevaccine']);
+    // Route::post('/feeds/{id}', [adminController::class, 'deletefeed']);
     Route::post('/vaccine', [adminController::class, 'postVaccine'])->name('totalpostvaccine');
     Route::get('/feeds', [adminController::class, 'feeds'])->name('totalfeeds');
     Route::post('/feeds', [adminController::class, 'postFeeds'])->name('totalpostfeeds');

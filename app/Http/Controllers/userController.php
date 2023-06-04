@@ -284,10 +284,11 @@ class userController extends Controller
     }
     public function poultrydailydetail()
     {
-        $poultry = DB::table('poultrydailies')->orderBy('created_at', 'desc')->first();
-        $chick = DB::table('chickpurchases')->orderBy('created_at', 'desc')->first();
+        $poultry = DB::table('poultrydailies')->orderBy('created_at', 'desc')->get();
+        $chick = DB::table('chickpurchases')->orderBy('created_at', 'desc')->get();
         $chickall = chickpurchase::all();
         // $totalyield 
+        // dd($chick);
         return view('users/poultry-daily-details')->with([
             'poultry' => $poultry,
             'chick' => $chick,
